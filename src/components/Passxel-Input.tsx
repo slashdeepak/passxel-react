@@ -8,7 +8,7 @@ const PassxelInput = (props:any) => {
 
   return (
     <div className="passxel-input">
-        <input type="text" onChange={(event) => onInputChange(event)} />
+        <input type="text" onChange={(event) => onInputChange(event)} placeholder="enter password"/>
     </div>
   )
 }

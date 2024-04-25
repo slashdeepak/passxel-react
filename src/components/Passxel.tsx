@@ -24,9 +24,11 @@ const Passxel = () => {
 
   return (
     <div className="passxel-container">
-        <div className="heading">Passxel</div>
+        <div className="heading">
+          <span id="glow">PASS</span><span id="blink">XEL</span>
+        </div>
         <PassxelInput onInputChange={handleInputChange} />
-        <PassxelResult passAnalysis={passAnalysis} />
+        {/* <PassxelResult passAnalysis={passAnalysis} /> */}
     </div>
   )
 
