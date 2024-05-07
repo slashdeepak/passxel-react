@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import "../styles/Passxel.css";
 import PassxelInput from "./Passxel-Input";
 import PassxelResult from "./Passxel-Result";
@@ -13,13 +13,13 @@ const Passxel = () => {
   const handleInputChange = (event:ChangeEvent<HTMLInputElement>) => {
     setInputPassword(event.target.value);
     // console.log(event.target.value);
-
-    if(inputPassword) {
-        const result:ZxcvbnResult = CalculatePassStrength(inputPassword);
-        setPassAnalysis(result);
-        // console.log(result);
-    }
   }
+
+  useEffect(() => {
+    const result:ZxcvbnResult = CalculatePassStrength(inputPassword);
+    result.guesses > 1 ? setPassAnalysis(result) : setPassAnalysis(null);
+    console.log(result);
+  }, [inputPassword])
 
 
   return (
@@ -28,7 +28,7 @@ const Passxel = () => {
           <span id="glow">PASS</span><span id="blink">XEL</span>
         </div>
         <PassxelInput onInputChange={handleInputChange} />
-        {/* <PassxelResult passAnalysis={passAnalysis} /> */}
+        <PassxelResult passAnalysis={passAnalysis} />
     </div>
   )
 

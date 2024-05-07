@@ -17,3 +17,13 @@ export const CalculatePassStrength = (inputPassword:string) => {
 }
 
 
+export const GetScoreDescription = (score:number) => {
+  switch(score) {
+    case 0: return "(too guessable)";
+    case 1: return "(very guessable)";
+    case 2: return "(somewhat guessable)";
+    case 3: return "(safely unguessable)";
+    case 4: return "(very unguessable)";
+    default: return "(too guessable)";
+  }
+}
