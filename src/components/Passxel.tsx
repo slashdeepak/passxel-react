@@ -1,16 +1,14 @@
 import { ChangeEvent, useEffect, useState } from "react";
-import "../styles/Passxel.css";
 import PassxelInput from "./Passxel-Input";
 import PassxelResult from "./Passxel-Result";
 import { CalculatePassStrength } from "./utils/Utils";
 import { ZxcvbnResult } from "@zxcvbn-ts/core";
 import Passxel_Result_Action from "./Passxel-Result-Action";
 import { useScramble } from 'use-scramble';
+import "../styles/Passxel.css";
 
 
 const Passxel = () => {
-  // const { contextSafe } = useGSAP();
-
   const [inputPassword, setInputPassword] = useState<string|any>("");
   const [passAnalysis, setPassAnalysis] = useState<ZxcvbnResult|any>({});
 

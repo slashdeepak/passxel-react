@@ -21,19 +21,16 @@
 
 .heading {
     --pink: #ff18a7;
-    /* align-self: flex-start; */
     padding: 2rem 0;
     color: rgba(255,255,255,0.5);
     font-size: 1.5rem;
     letter-spacing: 0.25rem;
     font-family: "Orbitron", sans-serif;
     /* font-family: monospace, sans-serif; */
-    /* text-shadow: 0 0 0.15em #1da9cc; */
-    /* text-shadow: 0 0 3px #fff, 0 0 5px #fff, 0 0 8px #00ff33, 0 0 10px #00ff33, 0 0 15px #00ff33; */
 }
 
 .passxel-input {
-    width: 50vw;
+    width: 60vw;
     height: 3rem;
     position: relative;
     z-index: 1;
