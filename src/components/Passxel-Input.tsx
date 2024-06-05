@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import "../styles/Passxel.css";
 
 import eye_open_icon from "../assets/eye-open.svg";
