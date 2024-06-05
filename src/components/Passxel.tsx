@@ -4,13 +4,15 @@ import PassxelInput from "./Passxel-Input";
 import PassxelResult from "./Passxel-Result";
 import { CalculatePassStrength } from "./utils/Utils";
 import { ZxcvbnResult } from "@zxcvbn-ts/core";
-import copy_icon from "../assets/copy.svg";
+import Passxel_Result_Action from "./Passxel-Result-Action";
+import { useScramble } from 'use-scramble';
 
 
 const Passxel = () => {
+  // const { contextSafe } = useGSAP();
+
   const [inputPassword, setInputPassword] = useState<string|any>("");
   const [passAnalysis, setPassAnalysis] = useState<ZxcvbnResult|any>({});
-  const [isCopied, setIsCopied] = useState<any>({password: false, analysis:false});
 
   const handleInputChange = (event:ChangeEvent<HTMLInputElement>) => {
     setInputPassword(event.target.value);
@@ -23,46 +25,27 @@ const Passxel = () => {
     console.log(result);
   }, [inputPassword])
 
-
-  const copyToClipboard = (option:string) => {
-    let data = option === "password" ? inputPassword : passAnalysis;
-    if(option === "password") {
-      setIsCopied((prevState:any) => ({...prevState, password: !prevState.password}) );
-    } else {
-      setIsCopied((prevState:any) => ({...prevState, analysis: !prevState.analysis}) );
-    }
-
-    navigator.clipboard.writeText(JSON.stringify(data, null, 2)).then(() => {
-      setTimeout(() => {
-        setIsCopied((prevState:any) => ({...prevState, password:false, analysis:false}) );
-      }, 1300);
-    })
-  }
+  const { ref } = useScramble({
+    text: 'PASSXEL',
+    speed: 0.2,
+    tick: 1,
+    step: 1,
+    scramble: 5,
+    seed: 0,
+  });
 
 
-  
+
   return (
     <div className="passxel-container">
-        <div className="heading">
-          <span id="glow">PASS</span><span id="blink">XEL</span>
-        </div>
-        <PassxelInput onInputChange={handleInputChange} />
-        <PassxelResult passAnalysis={passAnalysis} />
-
-        { passAnalysis && 
-          <div className="result-actions">
-            <button className="action-btn" onClick={() => copyToClipboard('password')}>
-              { isCopied.password ? <div className="copied-msg"><img className="copy-icon" src={copy_icon} alt="copy" /><span>copied</span></div> : <span>copy password</span>  }
-            </button>
-
-            <button className="action-btn" onClick={() => copyToClipboard('analysis')}>
-              { isCopied.analysis ? <div className="copied-msg"><img className="copy-icon" src={copy_icon} alt="copy" /><span>copied</span></div> : <span>copy analysis</span>  }
-            </button>
-          </div>
-        }
+      <div className="heading">
+        <span id="scramble" ref={ref}></span>
+      </div>
+      <PassxelInput onInputChange={handleInputChange} />
+      <PassxelResult passAnalysis={passAnalysis} />
+      { passAnalysis && <Passxel_Result_Action inputPassword={inputPassword} passAnalysis={passAnalysis} /> }
     </div>
   )
-
   
 }
 
