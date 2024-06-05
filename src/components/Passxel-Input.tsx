@@ -19,7 +19,7 @@ const PassxelInput = (props:any) => {
   return (
     <div className="passxel-input">
         <input type={ showPassword ? "text" : "password" } onChange={(event) => onInputChange(event)} placeholder="check password strength"/>
-        <button onClick={onButtonClick} className="show-hide-toggle">
+        <button onClick={onButtonClick} className="action-btn" id="show-hide-toggle">
           <img src={ showPassword ? eye_open_icon : eye_closed_icon } alt="show/hide password" />
         </button>
     </div>
