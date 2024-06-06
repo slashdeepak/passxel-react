@@ -143,7 +143,7 @@
         0 0.3px 0.4px hsla(0, 0%, 0%, 0.02),
         0 0.9px 1.5px hsla(0, 0%, 0%, 0.045),
         0 3.5px 6px hsla(0, 0%, 0%, 0.09);
-
+    animation: fade-in 2s;
     
     .hacker-logo {
         display: flex;
@@ -163,7 +163,6 @@
         display: flex;
         flex-direction: column;
         gap: 0.6rem;
-        
         /* padding: 0.75rem; */
 
         .result-item {
@@ -176,6 +175,7 @@
             }
         }
     }
+
 }
 
 
@@ -185,6 +185,7 @@
     justify-content: center;
     align-items: center;
     gap: 2rem;
+    animation: swing-in-top-fwd 1s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
     
     .action-btn {
         font-family: "Orbitron", sans-serif;
@@ -221,6 +222,23 @@
             }
         }
     }
-
     
+}
+
+@keyframes fade-in {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes swing-in-top-fwd {
+    0% {
+        transform: rotateX(-100deg);
+        transform-origin: top;
+      opacity: 0;
+    }
+    100% {
+        transform: rotateX(0deg);
+        transform-origin: top;
+      opacity: 1;
+    }
 }

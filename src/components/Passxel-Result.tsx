@@ -31,19 +31,15 @@ const PassxelResult = (props:any) => {
   }
 
   return (
-    <>
-      <div className="passxel-result" style={ result ? {borderRadius:'5px'} : {borderRadius:'50%'} }>
-        <div className="hacker-logo">
-          <img src={hacker_logo} alt="hacker_logo" />
-        </div>
-        
-        <div className="results">
-          { getResultItems() }
-        </div>
-
+    <div className="passxel-result" style={ result ? {borderRadius:'5px'} : {borderRadius:'50%'} }>
+      <div className="hacker-logo">
+        <img src={hacker_logo} alt="hacker_logo" />
       </div>
-    
-    </>
+      
+      <div className="results">
+        { getResultItems() }
+      </div>
+    </div>
 
   )
 }

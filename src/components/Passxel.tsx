@@ -5,6 +5,7 @@ import { CalculatePassStrength } from "./utils/Utils";
 import { ZxcvbnResult } from "@zxcvbn-ts/core";
 import Passxel_Result_Action from "./Passxel-Result-Action";
 import { useScramble } from 'use-scramble';
+
 import "../styles/Passxel.css";
 
 
@@ -20,10 +21,10 @@ const Passxel = () => {
   useEffect(() => {
     const result:ZxcvbnResult = CalculatePassStrength(inputPassword);
     result.guesses > 1 ? setPassAnalysis(result) : setPassAnalysis(null);
-    console.log(result);
+    // console.log(result);
   }, [inputPassword])
 
-  const { ref } = useScramble({
+  let { ref, replay } = useScramble({
     text: 'PASSXEL',
     speed: 0.2,
     tick: 1,
@@ -33,11 +34,10 @@ const Passxel = () => {
   });
 
 
-
   return (
     <div className="passxel-container">
       <div className="heading">
-        <span id="scramble" ref={ref}></span>
+        <span id="scramble" ref={ref} onMouseOver={replay}></span>
       </div>
       <PassxelInput onInputChange={handleInputChange} />
       <PassxelResult passAnalysis={passAnalysis} />
