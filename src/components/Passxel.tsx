@@ -5,6 +5,7 @@ import { CalculatePassStrength } from "./utils/Utils";
 import { ZxcvbnResult } from "@zxcvbn-ts/core";
 import Passxel_Result_Action from "./Passxel-Result-Action";
 import { useScramble } from 'use-scramble';
+import bg_video from '../assets/smoke-background.mp4';
 
 import "../styles/Passxel.css";
 
@@ -35,6 +36,10 @@ const Passxel = () => {
 
 
   return (
+    <>
+    <video className="background-video" autoPlay loop muted>
+      <source src={bg_video} type='video/mp4' />
+    </video>
     <div className="passxel-container">
       <div className="heading">
         <span id="scramble" ref={ref} onMouseOver={replay}></span>
@@ -43,6 +48,7 @@ const Passxel = () => {
       <PassxelResult passAnalysis={passAnalysis} />
       { passAnalysis && <Passxel_Result_Action inputPassword={inputPassword} passAnalysis={passAnalysis} /> }
     </div>
+    </>
   )
   
 }
